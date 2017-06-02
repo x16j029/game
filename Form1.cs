@@ -15,6 +15,8 @@ namespace game
         int spaed = 5;
         int moveX;
         int moveY;
+        int moveX2;
+        int moveY2;
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +61,9 @@ namespace game
             
             pictureBox1.Left += moveX;
             pictureBox1.Top += moveY;
+            pictureBox3.Left += moveX2;
+            pictureBox3.Top += moveY2;
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -66,15 +71,31 @@ namespace game
             if (e.KeyCode == Keys.Up)
             {
                 moveY-= spaed;
-            }else if (e.KeyCode == Keys.Down)
+                moveY2 -= spaed;
+            }
+            else if (e.KeyCode == Keys.Down)
             {
                 moveY += spaed;
-            }else if (e.KeyCode == Keys.Right)
+                moveY2 += spaed;
+            }
+            else if (e.KeyCode == Keys.Right)
             {
                 moveX += spaed;
-            }else if (e.KeyCode == Keys.Left)
+                moveX2 += spaed;
+            }
+            else if (e.KeyCode == Keys.Left)
             {
                 moveX -= spaed;
+                moveX2 -= spaed;
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                moveY2 -= spaed;
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                pictureBox3.Left = pictureBox1.Left;
+                pictureBox3.Top = pictureBox1.Top;
             }
         }
 
@@ -88,19 +109,28 @@ namespace game
             if (e.KeyCode == Keys.Up)
             {
                 moveY = 0;
+                moveY2 = 0;
             }
             else if (e.KeyCode == Keys.Down)
             {
                 moveY = 0;
+                moveY2 = 0;
             }
             else if (e.KeyCode == Keys.Right)
             {
                 moveX = 0;
+                moveX2 = 0;
             }
             else if (e.KeyCode == Keys.Left)
             {
                 moveX = 0;
+                moveX2 = 0;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
